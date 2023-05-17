@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Run any build steps here, e.g., compiling the code
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run your tests here, e.g., using a test framework
+                sh 'mvn test'
+            }
+        }
+    }
+}
+
